@@ -1,0 +1,57 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+<title>NLP metrics</title>
+
+<h1>Calculate different NLP metrics</h1>
+
+<label for="text1">Text1:</label>
+<textarea id="text1" name="text1" rows="5", cols="33"></textarea>
+
+
+<label for="text2">Text2:</label>
+<textarea id="text2" name="text2" rows="5", cols="33"></textarea>
+
+<div id="output-div"></div>
+
+
+
+<div style="margin-top: 20px;">
+    <label for="api-key" >OpenAI API Key:</label>
+    <input type="text" id="api-key" placeholder="Enter your OpenAI API key">
+</div>
+
+<button id="submit-button" style="margin-top: 5px;">LLM-based comparison</button>
+
+<div id="chatgpt-response" style="margin-top: 5px;"></div>
+
+
+
+<p>More details about this project <a href="https://github.com/adrische" target="_blank">on GitHub.</a></p>
+
+<script src="{{ url_for('static', filename='openai.js')}}"></script>
+
+
+
+
+<script>
+    function get_results() {
+
+        let data = new FormData()
+        data.append("text1", document.getElementById("text1").value)
+        data.append("text2", document.getElementById("text2").value)
+                
+        const calc_url = {{ url_for('calc')|tojson }}
+
+        fetch(calc_url, {
+            "method": "POST",
+            "body": data,
+        })
+        .then(response => response.text())
+        .then(text => document.getElementById("output-div").innerHTML = text);
+
+    }
+
+    // "change" will trigger once focus of input is removed
+    document.getElementById("text1").addEventListener("input", get_results);
+    document.getElementById("text2").addEventListener("input", get_results);
+</script>

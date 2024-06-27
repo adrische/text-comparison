@@ -1,0 +1,8 @@
+<!doctype html>
+{% if metrics is not none %}
+  {% for Metric, value in metrics.items() %}
+    <p>{{Metric}} distance: {{value}}</p>
+  {% endfor %}
+{% else %}
+  <p>No metrics could not be computed.</p>
+{% endif %}

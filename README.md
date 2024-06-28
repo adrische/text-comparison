@@ -2,7 +2,9 @@
 
 Calculate different metrics to compare two texts.
 
-Available at <a href="http://textcomparison.pythonanywhere.com" target="_blank">textcomparison.pythonanywhere.com</a>.
+Available at <a href="http://textcomparison.pythonanywhere.com" target="_blank">textcomparison.pythonanywhere.com</a> (it may take some time to load):
+
+![Screenshot of the app](static/screenshot-app.png "Screenshot of the app")
 
 There currently seem to be 4 different approaches to evaluate text similarity. 
 
